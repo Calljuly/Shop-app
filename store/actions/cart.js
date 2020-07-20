@@ -1,4 +1,5 @@
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const REVOME_FROM_CART = 'REMOVE_TO_CART';
 
 export const addToCart = product =>{
     return {
@@ -6,3 +7,9 @@ export const addToCart = product =>{
         product: product
     }
 };
+export const removeFromCart = (productId) =>{
+    return {
+        type: REVOME_FROM_CART,
+        pid: productId
+    }
+}

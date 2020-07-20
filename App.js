@@ -3,6 +3,7 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import productReducers from './store/reducers/product';
 import CartReducer from './store/reducers/cart';
+import OrdersReducer from './store/reducers/order';
 import ShopNavigation from './navigation/ShopNavigation';
 import {AppLoading} from 'expo';
 import * as Font from './assets/fonts';
@@ -16,7 +17,8 @@ const fetchFonts = () =>
 }
 const rootReducers = combineReducers({
   products: productReducers,
-  cart : CartReducer
+  cart : CartReducer,
+  orders :OrdersReducer 
 });
 
 const store = createStore(rootReducers);
