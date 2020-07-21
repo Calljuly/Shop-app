@@ -18,8 +18,7 @@ const ProductItem = (props) =>{
             <Text style={styles.headerTitle}>{props.title}</Text>
             <Text style={styles.price}>{props.price.toFixed(2)}</Text>
             <View style={styles.buttonContainer}>
-                <Button color={Colors.primary} title="View Details" onPress={props.viewDetails} />
-                <Button color={Colors.primary} title="Add To Cart" onPress={props.viewCart} />
+               {props.children}
             </View>
             </View>
             </Touchable>

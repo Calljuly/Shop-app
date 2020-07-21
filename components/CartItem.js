@@ -12,11 +12,11 @@ const CartItem = (props) =>{
             </View>
             <View style={styles.itemData}>
                 <Text style={styles.mainText}>{props.amount}</Text>
-                <TouchableOpacity onPress={props.onRemove} style={styles.deleteBTN}>
+               {props.deletable && ( <TouchableOpacity onPress={props.onRemove} style={styles.deleteBTN}>
                     <Ionicons name={Platform.OS === 'android' ? 'md-trash': 'ios-trash'}
                     size={23}
                     color="red" />
-                </TouchableOpacity>
+                </TouchableOpacity>)}
             </View>
         </View>
     );

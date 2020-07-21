@@ -47,6 +47,7 @@ const CartScreen = (props) =>{
                     quantity={itemData.item.quantity}
                     title={itemData.item.title}
                     amount={itemData.item.sum}
+                    deletable
                     onRemove={() =>{
                         dispatch(cartAction.removeFromCart(itemData.item.productId));
                     }} />
@@ -57,6 +58,12 @@ const CartScreen = (props) =>{
         </View>
     );
 };
+
+CartScreen.navigationOptions = (data) => {
+    return {
+        headerTitle: 'Your Cart '
+    }
+}
 
 const styles = StyleSheet.create({
     screen: {
