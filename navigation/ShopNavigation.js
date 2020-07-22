@@ -9,6 +9,7 @@ import {Platform} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import React from 'react';
 import UserProductScreen from '../screens/UserProductScreen';
+import EditScreen from '../screens/EditProducts';
 
 const defaultStyles = { 
     headerStyle:{
@@ -51,7 +52,8 @@ const OrdersNavigation = createStackNavigator({
     defaultNavigationOptions: defaultStyles
 });
 const AdminNavigation = createStackNavigator({
-    UserProducts : UserProductScreen
+    UserProducts : UserProductScreen,
+    EditProducts : EditScreen
 },{
     navigationOptions:{
         drawerIcon: drawerConfig => (
