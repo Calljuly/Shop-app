@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native';
-import {Ionicons} from 'expo';
+import {Ionicons} from '@expo/vector-icons';
 
 
 const CartItem = (props) =>{
@@ -11,8 +11,9 @@ const CartItem = (props) =>{
                 <Text style={styles.mainText}>{props.title}</Text>
             </View>
             <View style={styles.itemData}>
-                <Text style={styles.mainText}>{props.amount}</Text>
-               {props.deletable && ( <TouchableOpacity onPress={props.onRemove} style={styles.deleteBTN}>
+                <Text style={styles.mainText}>{props.amount.toFixed(2)}</Text>
+               {props.deletable && 
+               ( <TouchableOpacity onPress={props.onRemove} style={styles.deleteBTN}>
                     <Ionicons name={Platform.OS === 'android' ? 'md-trash': 'ios-trash'}
                     size={23}
                     color="red" />
@@ -20,7 +21,7 @@ const CartItem = (props) =>{
             </View>
         </View>
     );
-}
+};
 const styles = StyleSheet.create({
     card:{
         padding: 10,
@@ -35,12 +36,10 @@ const styles = StyleSheet.create({
 
     },
     quantity:{
-        fontFamily: 'open-sans',
         color: '#888',
         fontSize: 16
     },
     mainText:{
-        fontFamily: 'open-sans-bold',
         fontSize: 16
     },
     deleteBTN:{

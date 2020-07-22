@@ -10,13 +10,11 @@ const ProductItem = (props) =>{
     return (
         <View style={styles.product}>
             <View style={styles.touchable}>
-            <Touchable useForeground onPress={
-            props.viewDetails
-            }>
+            <Touchable onPress={props.viewDetails} useForeground>
             <View>
             <Image style={styles.image} source={{uri: props.image}} />
             <Text style={styles.headerTitle}>{props.title}</Text>
-            <Text style={styles.price}>{props.price.toFixed(2)}</Text>
+            <Text style={styles.price}>{props.price}</Text>
             <View style={styles.buttonContainer}>
                {props.children}
             </View>
@@ -45,14 +43,14 @@ const styles = StyleSheet.create({
         padding: 10
     },
     headerTitle:{
-        fontFamily:'open-sans-bold' ,
         fontSize: 18,
         marginVertical: 2,
+        textAlign: 'center'
     },
     price:{
-        fontFamily:'open-sans' ,
         fontSize: 14,
-        color: '#888'
+        color: '#888',
+        textAlign: 'center'
     },
     product:{
         shadowColor: 'black',

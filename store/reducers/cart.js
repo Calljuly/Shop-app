@@ -13,26 +13,24 @@ export default (state = initialState, action) =>{
             const addedProduct = action.product;
             const productPrice= addedProduct.price;
             const productTitle = addedProduct.title;
-            
+            let updatedCartItem;
             if(state.items[addedProduct.id]){
-                const updatedCartItem = new CartItem(
+                updatedCartItem = new CartItem(
                     state.items[addedProduct.id].quantity +1,
                     productPrice,
                     productTitle,
                     state.items[addedProduct.id].sum + productPrice 
                 );
-                return {
-                    ...state, items:{...state.items, [addedProduct.id] : updatedCartItem},
-                    totalAmount: state.totalAmount + productPrice
-                };
+                
             }
             else{
-                const newCartItem = new CartItem(1,productPrice, productTitle,productPrice );
-                return {
-                    ...state , 
-                    items: {...state.items, [addedProduct.id] : newCartItem }
-                }
+                updatedCartItem = new CartItem(
+                    1,productPrice, productTitle,productPrice );
             }
+            return {
+                ...state, items:{...state.items, [addedProduct.id] : updatedCartItem},
+                totalAmount: state.totalAmount + productPrice
+            };
         case REVOME_FROM_CART:
             const currentQuantity = state.items[action.pid].quantity;
             const selectedItem = state.items[action.pid];

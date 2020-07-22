@@ -1,10 +1,9 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {View, Text, StyleSheet, ScrollView, TextInput, Platform, Alert} from 'react-native';
-import { FadeOutToBottomAndroidSpec } from 'react-navigation-stack/lib/typescript/src/vendor/TransitionConfigs/TransitionSpecs';
 import {useSelector, useDispatch} from 'react-redux';
 import HeaderBTN from '../components/HeaderButton';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
-import * as prodAction from '../store/actions';
+import * as prodAction from '../store/actions/product';
 
 const EditScreen = (props) => {
     const prodId = props.navigation.getParam('productId');
@@ -88,7 +87,6 @@ const styles = StyleSheet.create({
         width:'100%'
     },
     label:{
-        fontFamily: 'open-sans-bold',
         marginVertical: 8
     },
     input:{

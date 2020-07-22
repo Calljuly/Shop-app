@@ -10,19 +10,24 @@ const OrderItem = (props) =>{
     return (
         <View style={styles.orderItem}>
             <View style={styles.summary}>
-                <Text style={styles.totalAmount}>${props.amount.toFixed(2)}</Text>
+                <Text style={styles.totalAmount}>${props.amount}</Text>
                 <Text style={styles.date}>{props.date}</Text>
             </View>
-            <Button title={showDetails ? "Hide Details":"Show Details"} color={Colors.primary} onPress={() =>{
+            <Button 
+            title={showDetails ? "Hide Details":"Show Details"} 
+            color={Colors.primary} 
+            onPress={() =>{
                 setShowDetails(state => !state);
             }} />
             {showDetails && 
-            <View style={styles.detailItems}> {props.items.map(cartItem =>{
-               return <CartItem
-               amount={cartItem.sum.toFixed(2)}
+            (<View style={styles.detailItems}> 
+            {props.items.map(cartItem => (
+            <CartItem
+               key={cartItem.id}
+               amount={cartItem.sum}
                quantity={cartItem.quantity}
-               title={cartItem.productTitle} />
-            })}</View>}
+               title={cartItem.productTitle}  />))}
+            </View>)}
         </View>
     );
 } 
@@ -38,22 +43,22 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
         margin: 20,
-        padding: 10
+        padding: 10,
+        alignItems: 'center'
     },
     summary:{
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems : 'center',
         width: '100%',
         marginBottom: 15
     },
     totalAmount:{
-        fontFamily: 'open-sans-bold',
-        fontSize: 16
+        fontSize: 16,
     },
     date:{
-        fontSize: 16,
-        fontFamily: 'open-sans',
+        fontSize: 13,
+        margin: 5,
         color: '#888'
     },
     detailItems:{
