@@ -10,7 +10,6 @@ const EditScreen = (props) => {
     const editedProduct = useSelector(state => 
         state.products.userProducts.find(prod => prod.id === prodId));
 
-
     const [title, setTitle] = useState(editedProduct ? editedProduct.title:'');
     const [image, setImage] = useState(editedProduct ? editedProduct.imageUrl:'');
     const [price, setPrice] = useState('');
@@ -40,25 +39,25 @@ const EditScreen = (props) => {
                 <TextInput 
                 style={styles.input} 
                 value={title} 
-                onTextChange={text => setTitle(text)} />
+                onChangeText={text => setTitle(text)} />
             </View>
             <View style={styles.formControll}>
                 <Text style={styles.label}>Image Url</Text>
                 <TextInput style={styles.input}
                 value={image}
-                onTextChange={text => setImage(text)} />
+                onChangeText={text => setImage(text)} />
             </View>
             {editedProduct ? null : (<View style={styles.formControll}>
                 <Text style={styles.label}>Price</Text>
                 <TextInput style={styles.input}
                 value={price}
-                onTextChange={text => setPrice(text)} />
+                onChangeText={text => setPrice(text)} />
             </View>)}
             <View style={styles.formControll}>
                 <Text style={styles.label}>Description</Text>
                 <TextInput style={styles.input}
                 value={description}
-                onTextChange={text => setDescription(TextDecoderStream)} />
+                onChangeText={text => setDescription(TextDecoderStream)} />
             </View>
             </View>
         </ScrollView>
@@ -71,14 +70,14 @@ EditScreen.navigationOptions =(data) =>{
     return {
         headerTitle: data.navigation.getParam('productIt')?
         'Edit Product' : 'Add Product',
-        headerRight:() =>{
-            return <HeaderButtons HeaderButtonComponent={HeaderBTN}>
+        headerRight:(
+             <HeaderButtons HeaderButtonComponent={HeaderBTN}>
             <Item title="Save" 
             iconName={Platform.OS === 'android' ? 'md-checkmark': 'ios-checkmark'}
             onPress={submithandler} />
-        </HeaderButtons>
+        </HeaderButtons>)
     }
-}}
+}
 const styles = StyleSheet.create({
     form:{
         margin: 20
