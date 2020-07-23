@@ -69,7 +69,7 @@ EditScreen.navigationOptions =(data) =>{
     const submithandler = data.navigation.getParam('submit');
 
     return {
-        headerTitle: FadeOutToBottomAndroidSpec.navigation.getParam('productIt')?
+        headerTitle: data.navigation.getParam('productIt')?
         'Edit Product' : 'Add Product',
         headerRight:() =>{
             return <HeaderButtons HeaderButtonComponent={HeaderBTN}>

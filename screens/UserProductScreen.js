@@ -20,10 +20,10 @@ const UserProductScreen = (props) =>{
             {text:'Yes', style: 'destructive', onPress: ()=>{
                 dispatch(deleteProduct(id))}}]);
     }
-    return <FlatList
+    return (<FlatList
             data={userProducts}
             keyExtractor={item => item.id}
-            renderItem={itemData =>{
+            renderItem={itemData =>(
                 <ProductItem 
                 title={itemData.item.title}
                 price={itemData.item.price}
@@ -35,7 +35,7 @@ const UserProductScreen = (props) =>{
                 <Button color={Colors.primary} 
                 title="Delete" onPress={deleteHandler.bind(this, itemData.item.id)} /> 
                 </ProductItem>
-            }} />
+    )} />)
 };
 UserProductScreen.navigationOptions=(data) =>{
     return {
