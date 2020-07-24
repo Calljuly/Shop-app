@@ -15,6 +15,7 @@ const UserProductScreen = (props) =>{
     }
     const deleteHandler = (id) =>
     {
+        //Alert doesn not work but without I can delete products
         Alert.alert('Du you really want to delete this item ?', [
             {text: 'No', style: 'default'}, 
             {text:'Yes', style: 'destructive', onPress: ()=>{
@@ -49,15 +50,15 @@ UserProductScreen.navigationOptions=(data) =>{
         }} />
     </HeaderButtons>
     },
-    headerRight:() =>{
-        return <HeaderButtons HeaderButtonComponent={HeaderBTN}>
+    headerRight:
+        ( <HeaderButtons HeaderButtonComponent={HeaderBTN}>
         <Item title="Add" 
         iconName={Platform.OS === 'android' ? 'md-create': 'ios-create'}
         onPress={() =>{
-            data.navigation.navigate('EditProduct');
+            data.navigation.navigate('EditProducts');
         }} />
-    </HeaderButtons>
-    }
+    </HeaderButtons>)
+    
 }
 };
 export default UserProductScreen;
